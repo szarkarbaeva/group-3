@@ -1,12 +1,37 @@
-variable "aws_region"       { default = "us-east-1" }
-variable "vpc_cidr"         { default = "10.0.0.0/16" }
-variable "azs"              { default = ["us-east-1a", "us-east-1b", "us-east-1c"] }
-variable "ami_id"           { default = "ami-0f9de6e2d2f067fca" }
-variable "instance_type"    { default = "t2.micro" }
+variable "vpc_cidr" {
+  type        = string
+  default = "10.0.0.0/16"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "key_name" {
+  description = "SSH key pair name"
+}
+
+variable "bastion_cidr" {
+  description = "CIDR block for Bastion host"
+}
+
+variable "db_name" {
+  type        = string
+  default = "wordpressdb"
+}
+
+variable "db_user" {
+  default = "wpuser"
+}
+
+variable "db_password" {
+  description = "Database password"
+  sensitive   = true
+}
+
+variable "aws_region" {
+  description = "The AWS region to deploy resources in"
+  type        = string
+}
+
 variable "public_key_path"  { default = "~/.ssh/id_rsa.pub" }
-variable "bastion_cidr"     { default = "0.0.0.0/0" }
-variable "db_name"          { default = "wordpress" }
-variable "db_user"          { default = "Kaizen" }
-variable "db_password"      {}
-variable "db_instance_class"{}
-variable "engine_version"   {}

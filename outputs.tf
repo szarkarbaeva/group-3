@@ -1,7 +1,7 @@
 output "wordpress_url" {
-  value = "http://${module.compute.public_ip}"
+  value = "http://${module.ec2.public_ip}"
+  description = "The public URL of the WordPress site"
 }
-
-output "rds_endpoint" {
-  value = module.database
+output "sg_id" {
+  value = aws_security_group.group.id
 }

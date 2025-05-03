@@ -1,9 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "terraform-bucket-group3"
-    key            = "env/dev/terraform.tfstate"
+    bucket         = "my-terraform-bucket-group-3"
+    key            = "group-3/terraform.tfstate"
     region         = "us-east-1"
-    use_lockfile   = true
-    encrypt        = true
+    dynamodb_table = "terraform-group-3"
   }
 }
